@@ -32,7 +32,7 @@ Otherwise, regard the **hpez** command name in the following as **[INSTALL_DIR]/
 
 The **hpez_vec** command can do both normal compression and QPET-integrated compression you can still apply **hpez_vec -q 0/1/3** to perform SZ3/QoZ/HPEZ vector compression. The arguments have similar structure with the **hpez** command, but some of them now need 3 values;  
 
-Base command: **hpez -q [level] -f/-d -a -[Dim_num] [fastest_dim_size] [second_fastest_dim_size] [slowest_dim_size] -i [input_file_name1] [input_file_name2] [input_file_name3] -o [output_file_name1] [output_file_name2] [output_file_name3] [output_file_name1] -M REL [error_bound (e.g. 1e-3)]** (the error bound is shared among three snapshots).
+Base command: **hpez_vec -q [level] -f/-d -a -[Dim_num] [fastest_dim_size] [second_fastest_dim_size] [slowest_dim_size] -i [input_file_name1] [input_file_name2] [input_file_name3] -o [output_file_name1] [output_file_name2] [output_file_name3] [output_file_name1] -M REL [error_bound (e.g. 1e-3)]** (the error bound is shared among three snapshots).
 
 QoI Config file: check the  **qoi_configs** folder to find templates, instructions, and examples.
 
