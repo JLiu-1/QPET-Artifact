@@ -17,7 +17,7 @@ The arguments are:
 * --qoi_k: the **c** parameter in paper. The default value is 3.
 * --high_prec: SPERR itself features some numerical instability. Use this when very small error bounds are needed (such as for log QoI).
 
-Command example: **sperr3d_vec data --input data1.dat data2.data data3.dat -c --ftype 32 --dims [dim3] [dim2] [dim1] --bitstream 2000.sperr.cmp --decomp_f 1.out 2.out 3.out --print_stats --pwe 1.0 --qoi_id 1 --qoi_tol 0.1 --qoi_string "x^2+y^2+z^2"**
+Command example: **sperr3d_vec --input data1.dat data2.data data3.dat -c --ftype 32 --dims [dim3] [dim2] [dim1] --bitstream 2000.sperr.cmp --decomp_f 1.out 2.out 3.out --print_stats --pwe 1.0 --qoi_id 1 --qoi_tol 0.1 --qoi_string "x^2+y^2+z^2"**
 
 
 ## Additional dependencies
