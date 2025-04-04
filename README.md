@@ -11,12 +11,11 @@ This branch contains the code for QPET-integrated SPERR. You can pass additional
 
 The arguments are:
 
-* --qoi_id [ID]: ID = 1 is normal symbolic QoI, default is 0 (no QoI).
+* --qoi_id [ID]: ID = 1 is normal symbolic QoI, ID = 4 is analytical x^3, ID = 5 is analytical e^x, ID = 6 is analytical x^2.
 * --qoi_tol [tol]: QoI error threshold (Absolute threshold).
 * --qoi_string [Exp]: QoI expression. Use quotation marks to ensure stable parsing (e.g., "log(x,2)").
 * --qoi_bs [block_size]: the side length of the regional QoI block. The default value is 1 (point-wise QoI).
-* --qoi_k [c]: the **c** parameter in paper. The default value is 3.
-* --qoi_analytical [bool]: Whether to use analytical solution for point-wise error bound, default is false.
+* --qoi_k: the **c** parameter in paper. The default value is 3.
 * --high_prec: SPERR itself features some numerical instability. Use this when very small error bounds are needed (such as for log QoI).
 
 
