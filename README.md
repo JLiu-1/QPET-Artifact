@@ -3,6 +3,32 @@
 [![CodeQL](https://github.com/NCAR/SPERR/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/NCAR/SPERR/actions/workflows/codeql-analysis.yml)
 [![DOI](https://zenodo.org/badge/225491235.svg)](https://zenodo.org/badge/latestdoi/225491235)
 
+## QPET-integrated SPERR
+
+This branch contains the code for QPET-integrated SPERR. You can pass additional arguments to the **sperr3d** executable to perform QPET-integrated compression tasks.
+
+(check branch **sperr-qpet-vec** for SPERR-QPET on vector QoIs)
+
+The arguments are:
+
+* --qoi_id [ID]: ID = 1 is normal symbolic QoI, default is 0 (no QoI).
+* --qoi_tol [tol]: QoI error threshold (Absolute threshold).
+* --qoi_string [Exp]: QoI expression. Use quotation marks to ensure stable parsing (e.g., "log(x,2)").
+* --qoi_bs [block_size]: the side length of the regional QoI block. The default value is 1 (point-wise QoI).
+* --qoi_k [c]: the **c** parameter in paper. The default value is 3.
+* --qoi_analytical [bool]: Whether to use analytical solution for point-wise error bound, default is false.
+* --high_prec: SPERR itself features some numerical instability. Use this when very small error bounds are needed (such as for log QoI).
+
+
+## Additional dependencies
+
+* SymEngine (https://github.com/symengine/symengine)
+* GMP (https://gmplib.org/) (The dependency of SymEngine)
+* Zstd >= 1.3.5 (https://facebook.github.io/zstd/).
+
+
+
+The following is the original readme of SPERR. Please refer to it for the basic knowledge of SPERR.
 
 ## Overview
 
