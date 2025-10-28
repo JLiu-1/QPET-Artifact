@@ -148,7 +148,7 @@ auto sperr::SPERR3D_VEC_OMP_C::compress(const T* buf1, const T* buf2, const T* b
       
       double sample_rate = 0.01;
       double length_sample_rate = pow(sample_rate,1.0/3.0);
-      std::array<size_t,3> sample_dims = {std::max(1,(size_t)(chunk_idx[i][1]*length_sample_rate)), std::max(1,(size_t)(chunk_idx[i][3]*length_sample_rate)), std::max(1,(size_t)(chunk_idx[i][5]*length_sample_rate))};
+      std::array<size_t,3> sample_dims = {std::max((size_t)1,(size_t)(chunk_idx[i][1]*length_sample_rate)), std::max((size_t)1,(size_t)(chunk_idx[i][3]*length_sample_rate)), std::max((size_t)1,(size_t)(chunk_idx[i][5]*length_sample_rate))};
       size_t sample_num = sample_dims[0]*sample_dims[1]*sample_dims[2];
 
       auto sampled_data = m_sample_center(chunk,chunk_dims,sample_dims);
