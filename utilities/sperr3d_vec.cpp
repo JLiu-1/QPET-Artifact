@@ -1,6 +1,6 @@
 #include "SPERR3D_VEC_OMP_C.h"
 #include "SPERR3D_OMP_D.h"
-
+#include "Timer.h"
 #include "CLI/App.hpp"
 #include "CLI/Config.hpp"
 #include "CLI/Formatter.hpp"
@@ -316,6 +316,8 @@ int main(int argc, char* argv[])
   //auto input3 = sperr::read_whole_file<uint8_t>(input_file3); 
 
   if (cflag) {
+    Timer timer(true);
+
     const auto total_vals = dims[0] * dims[1] * dims[2];
     if ((ftype == 32 && (total_vals * 4 != input[0].size())) ||
         (ftype == 64 && (total_vals * 8 != input[0].size()))) {
@@ -369,6 +371,8 @@ int main(int argc, char* argv[])
 
     auto stream = encoder->get_encoded_bitstream();
     encoder.reset();  // Free up some more memory.
+    timer.stop("Compression");
+
 
     // Output the compressed bitstream (maybe).
     if (!bitstream.empty()) {
@@ -388,6 +392,7 @@ int main(int argc, char* argv[])
     //
     const auto multi_res = (!decomp_lowres_f32.empty()) || (!decomp_lowres_f64.empty());
     if (print_stats || !decomp_f64.empty() || !decomp_f32.empty() || multi_res) {
+      Timer timer(true);
       if (decomp_lowres_f64.size()<3)
         decomp_lowres_f64.resize(3,"");
       if (decomp_lowres_f32.size()<3)
@@ -416,6 +421,7 @@ int main(int argc, char* argv[])
         outputd[i] = decoder->release_decoded_data();
         auto hierarchy = decoder->release_hierarchy();
         decoder.reset();
+        timer.stop("Decompression");
         //std::cout<<"p5.2"<<std::endl;
 
         // Output the hierarchy (maybe), and then destroy it.
@@ -512,6 +518,7 @@ int main(int argc, char* argv[])
   //
   else {
     assert(dflag);
+    Timer timer(true);
     const auto multi_res = (!decomp_lowres_f32.empty()) || (!decomp_lowres_f64.empty());
     if (decomp_lowres_f64.size()<3)
         decomp_lowres_f64.resize(3,"");
@@ -536,6 +543,7 @@ int main(int argc, char* argv[])
       auto vdims = decoder->get_dims();
       auto cdims = decoder->get_chunk_dims();
       decoder.reset();  // Free up memory!
+      timer.stop("Decompression");
 
       // Output the hierarchy (maybe), and then destroy it.
       auto ret = output_hierarchy(hierarchy, vdims, cdims, decomp_lowres_f64[i], decomp_lowres_f32[i]);

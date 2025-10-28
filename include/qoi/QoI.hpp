@@ -2,7 +2,6 @@
 #define SZ3_QOI_INTERFACE
 /**
  * Interface for some specific quantities of interest (QoIs)
- * Created by Xin Liang on 12/06/2021.
  */
 
 #include<vector>
