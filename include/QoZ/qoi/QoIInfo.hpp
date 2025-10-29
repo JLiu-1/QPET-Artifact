@@ -68,7 +68,7 @@ namespace QoZ {
                 qoi_id = 22;
             else if (qoi_string == "sin10x" or qoi_string == "sin(10x)" or qoi_string == "Sin10x" or qoi_string == "Sin(10x)"){
                 qoi_id = 20;
-                qoi_string = "11 1 0 22";
+                qoi_string = "11 10 0 22";
             }
             else if (qoi_string == "tanhx" or qoi_string == "tanh(x)" or qoi_string == "Tanhx" or qoi_string == "Tanh(x)")
                 qoi_id = 23;
